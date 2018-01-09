@@ -39,16 +39,28 @@ contexts:
       pop: true
 
   start:
-    - match: ([0-9|\.]+)\b
-      scope: chrStart.gtf
+    - match: ([0-9|\.](?=\d{2}\t))
+      scope: chrStart2.bed
+    - match: ([0-9|\.](?=\d{5}\t))
+      scope: chrStart2.bed
+    - match: ([0-9|\.](?=\d{8}\t))
+      scope: chrStart2.bed
+    - match: ([0-9|\.])
+      scope: chrStart.bed
     - match: \t
       push: end
     - match: $
       pop: true
 
   end:
-    - match: ([0-9|\.]+)\b
-      scope: chrEnd.gtf
+    - match: ([0-9|\.](?=\d{2}\t))
+      scope: chrStart2.bed
+    - match: ([0-9|\.](?=\d{5}\t))
+      scope: chrStart2.bed
+    - match: ([0-9|\.](?=\d{8}\t))
+      scope: chrStart2.bed
+    - match: ([0-9|\.])
+      scope: chrEnd.bed
     - match: \t
       push: score
     - match: $

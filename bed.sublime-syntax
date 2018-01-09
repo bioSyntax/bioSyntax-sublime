@@ -21,7 +21,13 @@ contexts:
   
   # Column 2: Start coordinate
   start:
-    - match: ([0-9|\.]+)\b
+    - match: ([0-9|\.](?=\d{2}\t))
+      scope: chrStart2.bed
+    - match: ([0-9|\.](?=\d{5}\t))
+      scope: chrStart2.bed
+    - match: ([0-9|\.](?=\d{8}\t))
+      scope: chrStart2.bed
+    - match: ([0-9|\.])
       scope: chrStart.bed
     - match: \t
       push: end
@@ -30,8 +36,14 @@ contexts:
 
   # Column 3: End Coordinate
   end:
-    - match: ([0-9|\.]+)\b
-      scope: chrEnd.bed
+    - match: ([0-9|\.](?=\d{2}\t))
+      scope: chrStart2.bed
+    - match: ([0-9|\.](?=\d{5}\t))
+      scope: chrStart2.bed
+    - match: ([0-9|\.](?=\d{8}\t))
+      scope: chrStart2.bed
+    - match: ([0-9|\.])
+      scope: chrStart.bed
     - match: \t
       push: name
     - match: $
