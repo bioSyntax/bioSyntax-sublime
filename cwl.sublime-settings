@@ -7,7 +7,7 @@
     "color_scheme": "Packages/bioSyntax/bioSyntax.tmTheme",
 
     // Word Wrapping
-    "word_wrap": false,
+    "word_wrap": "auto",
 
     // Line Number / Gutter -- User controlled
     //"line_numbers": true,

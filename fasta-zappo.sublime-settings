@@ -4,14 +4,14 @@
 // for this syntax
 {
 	// Sets the colors used within the text area
-    "color_scheme": "Packages/User/bioSyntax.tmTheme",
+    "color_scheme": "Packages/bioSyntax/bioSyntax.tmTheme",
 
     // Word Wrapping
-    "word_wrap": "false",
+    "word_wrap": false,
 
     // Line Number / Gutter -- User controlled
     //"line_numbers": true,
     //"gutter": true,
     //"margin": 4,
-    
+
 }
