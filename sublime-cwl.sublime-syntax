@@ -1,0 +1,99 @@
+%YAML 1.2
+---
+# CWL syntax highlighting file
+# Maintainer: Manabu Ishii
+# Source: https://github.com/manabuishii
+
+name: CWL
+# See http://www.sublimetext.com/docs/3/syntax.html
+file_extensions:
+  - cwl
+scope: source.cwl
+
+contexts:
+  # The prototype context is prepended to all contexts but those setting
+  # meta_include_prototype: false.
+  prototype:
+    - include: comments
+
+  main:
+  
+    # The main context is the initial starting point of our syntax.
+    # Include other contexts from here (or specify them directly).
+    - include: keywords
+    - include: type
+    - include: constant
+    - include: double_quoted_strings
+    - include: single_quoted_strings
+
+  keywords:
+    - match: '\b(class|cwlVersion|dockerPull|inputs|outputs|steps|id|requirements|hints|label|doc|secondaryFiles|streamable|outputBinding|format|outputSource|linkMerge|type|glob|loadContents|outputEval|merge_nested|merge_flattened|location|path|basename|dirname|nameroot|nameext|checksum|size|format|contents|listing|fields|symbols|items|in|out|run|scatter|scatterMethod|source|default|valueFrom|expressionLib|types|linkMerge|inputBinding|position|prefix|separate|itemSeparator|valueFrom|shellQuote|packages|package|version|specs|entry|entryname|writable|baseCommand|arguments|stdin|stderr|stdout|successCodes|temporaryFailCodes|permanentFailCodes|dockerLoad|dockerFile|dockerImport|dockerImageId|dockerOutputDirectory|envDef|envName|envValue|coresMin|coresMax|ramMin|ramMax|tmpdirMin|tmpdirMax|outdirMin|outdirMax)(?=:)'
+      scope: keyword.control.cwl
+
+  type:
+    - match: '\b(CommandLineTool|ExpressionTool|Workflow|InlineJavascriptRequirement|SchemaDefRequirement|DockerRequirement|SoftwareRequirement|InitialWorkDirRequirement|EnvVarRequirement|ShellCommandRequirement|ResourceRequirement)\b'
+      scope: support.type.cwl
+  constant:
+    - match: ':\s+(null|boolean|int|long|float|double|string|File|Directory)\b'
+      scope: storage.type.cwl
+
+  # double quoted string
+  double_quoted_strings:
+    - match: '"'
+      scope: punctuation.definition.string.begin.cwl
+      push: inside_double_quoted_string
+
+  inside_double_quoted_string:
+    - meta_include_prototype: false
+    - meta_scope: string.quoted.double.cwl
+    - match: '\.'
+      scope: constant.character.escape.cwl
+    - match: '"'
+      scope: punctuation.definition.string.end.cwl
+      pop: true
+  # single quoted string
+  single_quoted_strings:
+    - match: \'
+      scope: punctuation.definition.string.begin.cwl
+      push: inside_single_quoted_string
+
+  inside_single_quoted_string:
+    - meta_include_prototype: false
+    - meta_scope: string.quoted.single.cwl
+    - match: '\.'
+      scope: constant.character.escape.cwl
+    - match: \'
+      scope: punctuation.definition.string.end.cwl
+      pop: true
+
+  comments:
+    # Comments begin with a '#' and finish at the end of the line.
+    - match: '#.*$'
+      scope: punctuation.definition.comment.cwl
+      push:
+        # This is an anonymous context push for brevity.
+        - meta_scope: comment.line.number-sign.cwl
+        - match: $\n?
+          pop: true
+
+# MIT License
+
+# Copyright (c) 2018 Manabu ISHII
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
