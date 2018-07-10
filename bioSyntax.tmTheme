@@ -855,6 +855,22 @@
 
 		<dict>
 			<key>name</key>
+			<string>chrStart2</string>
+			<key>scope</key>
+			<string>chrStart2</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>background</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#4A9C6D</string>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>name</key>
 			<string>chrEnd</string>
 			<key>scope</key>
 			<string>chrEnd</string>
