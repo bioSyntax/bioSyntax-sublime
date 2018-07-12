@@ -185,12 +185,16 @@ contexts:
       scope: aaK
     - match: '[\s\t]+MET'
       scope: aaM
+    - match: '[\s\t]+MSE'
+      scope: aaM
     - match: '[\s\t]+PHE'
       scope: aaF
     - match: '[\s\t]+PRO'
       scope: aaP
     - match: '[\s\t]+SER'
       scope: aaS
+    - match: '[\s\t]+SEC'
+      scope: aaU
     - match: '[\s\t]+THR'
       scope: aaT
     - match: '[\s\t]+TRP'
@@ -198,7 +202,9 @@ contexts:
     - match: '[\s\t]+TYR'
       scope: aaY
     - match: '[\s\t]+VAL'
-      scope: aaV                                          
+      scope: aaV  
+    - match: '[\s\t]+UNK'
+      scope: aaX 
     #define chains (different colours for different chains from A-H)
     - match: '(?<=[\s\t])[AP](?=[\s\t]+[0-9])'
       scope: ntA.pdb
