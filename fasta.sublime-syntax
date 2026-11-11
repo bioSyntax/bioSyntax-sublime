@@ -5,7 +5,7 @@
 # Version: v0.1
 name: fasta
 # See http://www.sublimetext.com/docs/3/syntax.html
-file_extensions: [.fasta,.fa,.fas,.mfa]
+file_extensions: [fasta,fa,fas,mfa]
 scope: text.fasta
 
 
